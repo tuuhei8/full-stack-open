@@ -1,34 +1,34 @@
 ```mermaid
 sequenceDiagram
-    participant browser
-    participant server
+    participant selain
+    participant palvelin
 
-    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
-    activate server
+    selain->>palvelin: POST https://studies.cs.helsinki.fi/exampleapp/new_note
+    activate palvelin
 
-    Note right of browser: Selain lähettää syötetyn muistiinpanon palvelimelle
+    Note right of selain: Selain lähettää syötetyn muistiinpanon palvelimelle
     
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
-    activate server
-    server-->>browser: HTML dokumentti
-    deactivate server
+    selain->>palvelin: GET https://studies.cs.helsinki.fi/exampleapp/notes
+    activate palvelin
+    palvelin-->>browser: HTML dokumentti
+    deactivate palvelin
     
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
-    activate server
-    server-->>browser: css tiedosto
-    deactivate server
+    selain->>palvelin: GET https://studies.cs.helsinki.fi/exampleapp/main.css
+    activate palvelin
+    palvelin-->>selain: css tiedosto
+    deactivate palvelin
     
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.js
-    activate server
-    server-->>browser: JavaScript tiedosto
-    deactivate server
+    selain->>palvelin: GET https://studies.cs.helsinki.fi/exampleapp/main.js
+    activate palvelin
+    palvelin-->>selain: JavaScript tiedosto
+    deactivate palvelin
     
-    Note right of browser: Selain alkaa suorittaa Javascriptiä joka noutaa JSON:in palvelimelta
+    Note right of selain: Selain alkaa suorittaa Javascriptiä joka noutaa JSON:in palvelimelta
     
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
-    activate server
-    server-->>browser: [{ "content": "HTML is easy", "date": "2023-1-1" }, ... ]
-    deactivate server    
+    selain->>palvelin: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+    activate palvelin
+    palvelin-->>selain: [{ "content": "HTML is easy", "date": "2023-1-1" }, ... ]
+    deactivate palvelin 
 
-    Note right of browser: Selain suorittaa callback funktion joka piirtää muistiinpanot 
+    Note right of selain: Selain suorittaa callback funktion joka piirtää muistiinpanot 
 ```
