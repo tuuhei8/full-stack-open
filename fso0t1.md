@@ -23,7 +23,7 @@ sequenceDiagram
     palvelin-->>selain: JavaScript tiedosto
     deactivate palvelin
     
-    Note right of selain: Selain alkaa suorittaa Javascriptiä joka noutaa JSON:in palvelimelta
+    Note right of selain: Selain alkaa suorittaa Javascriptiä joka noutaa JSON:n palvelimelta
     
     selain->>palvelin: GET https://studies.cs.helsinki.fi/exampleapp/data.json
     activate palvelin
