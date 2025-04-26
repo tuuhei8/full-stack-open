@@ -10,7 +10,7 @@ sequenceDiagram
     
     selain->>palvelin: GET https://studies.cs.helsinki.fi/exampleapp/notes
     activate palvelin
-    palvelin-->>browser: HTML dokumentti
+    palvelin-->>selain: HTML dokumentti
     deactivate palvelin
     
     selain->>palvelin: GET https://studies.cs.helsinki.fi/exampleapp/main.css
