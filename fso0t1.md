@@ -8,13 +8,13 @@ sequenceDiagram
 
     Note right of selain: Selain lähettää syötetyn muistiinpanon palvelimelle
 
-    palvelin-->>selain: Palvelin lähettää selaimelle uudellenohjauspyynnön
+    palvelin-->>selain: Uudelleenohjauspyyntö
     deactivate palvelin
     
     selain->>palvelin: GET https://studies.cs.helsinki.fi/exampleapp/notes
     activate palvelin
 
-    Note right of selain: Submitin jälkeen selain oletusarvoisesti lataa sivun uudestaan
+    Note right of selain: Uudelleenohjauspyyntö saa selaimen lataamaan HTML:n uudestaan
 
     palvelin-->>selain: HTML dokumentti
     deactivate palvelin
