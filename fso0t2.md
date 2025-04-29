@@ -2,20 +2,9 @@
 sequenceDiagram
     participant selain
     participant palvelin
-
-    selain->>palvelin: POST https://studies.cs.helsinki.fi/exampleapp/new_note
-    activate palvelin
-
-    Note right of selain: Selain lähettää syötetyn muistiinpanon palvelimelle
-
-    palvelin-->>selain: Uudelleenohjauspyyntö/redirect
-    deactivate palvelin
     
-    selain->>palvelin: GET https://studies.cs.helsinki.fi/exampleapp/notes
+    selain->>palvelin: GET https://studies.cs.helsinki.fi/exampleapp/spa
     activate palvelin
-
-    Note right of selain: Uudelleenohjauspyyntö saa selaimen lataamaan HTML:n uudestaan
-
     palvelin-->>selain: HTML dokumentti
     deactivate palvelin
     
@@ -24,14 +13,14 @@ sequenceDiagram
     palvelin-->>selain: css tiedosto
     deactivate palvelin
     
-    selain->>palvelin: GET https://studies.cs.helsinki.fi/exampleapp/main.js
+    selain->>palvelin: GET https://studies.cs.helsinki.fi/exampleapp/spa.js
     activate palvelin
     palvelin-->>selain: JavaScript tiedosto
     deactivate palvelin
     
     Note right of selain: Selain alkaa suorittaa Javascriptiä joka noutaa JSON:n palvelimelta
     
-    selain->>palvelin: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+    selain->>palvelin: GET https://studies.cs.helsinki.fi/exampleapp/data.json 
     activate palvelin
     palvelin-->>selain: [{ "content": "HTML is easy", "date": "2023-1-1" }, ... ]
     deactivate palvelin 
