@@ -6,8 +6,9 @@ sequenceDiagram
     selain->>palvelin: POST https://studies.cs.helsinki.fi/exampleapp/new_note
     activate palvelin
 
-    Note right of selain: Selain lähettää syötetyn muistiinpanon palvelimelle submitilla
+    Note right of selain: Selain lähettää syötetyn muistiinpanon palvelimelle
 
+    palvelin-->>selain: Palvelin lähettää selaimelle uudellenohjauspyynnön
     deactivate palvelin
     
     selain->>palvelin: GET https://studies.cs.helsinki.fi/exampleapp/notes
