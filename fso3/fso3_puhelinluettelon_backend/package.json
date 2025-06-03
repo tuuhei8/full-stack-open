@@ -7,12 +7,13 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
+    "build:ui": "@powershell Remove-Item -Recurse -Force dist && cd ../../fso2/fso2_puhelinluettelo && npm run build && @powershell Copy-Item dist -Recurse ../../fso3/fso3_puhelinluettelon_backend",
+    "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push",
     "dev": "node --watch index.js",
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "cors": "^2.8.5",
     "express": "^5.1.0",
     "morgan": "^1.10.0"
   }

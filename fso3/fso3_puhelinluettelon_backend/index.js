@@ -1,13 +1,11 @@
 const express = require('express')
 var morgan = require('morgan')
 const app = express()
-const cors = require('cors')
 
 morgan.token('data', function (req) { return JSON.stringify(req.body)  })
 
 app.use(express.json())
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :data'))
-app.use(cors())
 app.use(express.static('dist'))
 
 const generateID = () => {
@@ -37,10 +35,6 @@ let persons = [
       "id": "4"
     }
   ]
-
-app.get('/', (request, response) => {
-  response.send('<h1>Hello world!</h1>')
-})
 
 app.get('/api/persons', (request, response) => {
   response.json(persons)
