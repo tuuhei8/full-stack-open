@@ -94,7 +94,7 @@ const App = () => {
       .catch(error => {
         console.log('addPerson error log:', error)
         const newMessage = {
-          content: 'Unable to add a new person.',
+          content: `${error.response.data.error}`,
           class: 'error'
         }
         setMessage(newMessage)
@@ -134,8 +134,8 @@ const App = () => {
     if (confirm) {
       personsService
         .remove(id)
-        .then((removedPerson) => {
-          setPersons(persons.filter(person => person.id !== removedPerson.id))
+        .then(response => {
+          setPersons(persons.filter(person => person.id !== response.id))
           const newMessage = {
             content: 'Person removed.',
             class: 'notification'
@@ -154,6 +154,11 @@ const App = () => {
           setPersons(persons.filter(person => person.id !== id))
         })
     }
+  }
+
+  const a = () => {
+    console.log(persons);
+    
   }
 
   useEffect(() => { 
@@ -196,6 +201,7 @@ const App = () => {
       nameOnChange={handleNewName} numberValue={newNumber}
       numberOnChange={handleNewNumber} />
       <h2>Numbers</h2>
+      <button onClick={a}>testi</button>
       {
         persons.map(person => <Persons key={person.name}
         name={person.name}

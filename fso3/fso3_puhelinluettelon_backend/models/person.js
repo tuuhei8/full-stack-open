@@ -1,9 +1,7 @@
 const mongoose = require('mongoose')
 
 const url = process.env.MONGODB_URI
-/*
-const url = `mongodb+srv://tuuhei:${password}@cluster0.phygv1h.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
-*/
+
 console.log('connecting to', url)
 mongoose.connect(url)
   .then(result => {
@@ -14,8 +12,21 @@ mongoose.connect(url)
   })
 
 const personSchema = new mongoose.Schema({
-    name: String,
-    number: String
+    name: {
+      type: String,
+      minLength: 3,
+      required: true
+    },
+    number: {
+      type: String,
+      validate: {
+        validator: function(v) {
+          return /\d{2,3}-\d{6,}/.test(v)
+        },
+        message: props => `${props.value} is not a valid number!`
+      },
+      required: true
+    }
 })
 
 personSchema.set('toJSON', {
