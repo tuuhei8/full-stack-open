@@ -3,5 +3,5 @@ Content-Type: application/json
 
 {
     "name": "Roope",
-    "number": "123"
+    "number": "12-1234567"
 }

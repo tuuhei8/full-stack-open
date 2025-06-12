@@ -156,11 +156,6 @@ const App = () => {
     }
   }
 
-  const a = () => {
-    console.log(persons);
-    
-  }
-
   useEffect(() => { 
     personsService
       .getAll()
@@ -175,7 +170,6 @@ const App = () => {
         }
         setMessage(newMessage)
         resetMessage()
-        setPersons(persons)
       })
   }, [])
 
@@ -201,7 +195,6 @@ const App = () => {
       nameOnChange={handleNewName} numberValue={newNumber}
       numberOnChange={handleNewNumber} />
       <h2>Numbers</h2>
-      <button onClick={a}>testi</button>
       {
         persons.map(person => <Persons key={person.name}
         name={person.name}
