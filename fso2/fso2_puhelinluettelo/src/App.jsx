@@ -119,12 +119,11 @@ const App = () => {
     .catch(error => {
       console.log('changeNumber error log:', error)
       const newMessage = {
-        content: 'This person has already been removed.',
+        content: `${error.response.data.error}`,
         class: 'error'
       }
       setMessage(newMessage)
       resetMessage()
-      setPersons(persons.filter(person => person.id !== personToUpdate.id))
     })
   }
 
@@ -165,7 +164,7 @@ const App = () => {
       .catch(error => {
         console.log('useEffect error log:', error)
         const newMessage = {
-          content: 'Database is empty',
+          content: 'Database is empty or inaccessible.',
           class: 'error'
         }
         setMessage(newMessage)
