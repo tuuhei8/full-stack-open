@@ -83,7 +83,7 @@ app.put('/api/persons/:id', (request, response, next) => {
       person.number = number
 
       return person.save().then((updatedPerson) => {
-        response.status(201).json(updatedPerson)
+        response.json(updatedPerson)
       })
     })
     .catch(error => next(error))
