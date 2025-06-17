@@ -65,7 +65,7 @@ app.post('/api/persons', (request, response, next) => {
   })
   
   person.save().then(savedPerson => {
-    response.json(savedPerson)
+    response.status(201).json(savedPerson)
   })
     .catch(error => next(error))
 })
@@ -83,7 +83,7 @@ app.put('/api/persons/:id', (request, response, next) => {
       person.number = number
 
       return person.save().then((updatedPerson) => {
-        response.json(updatedPerson)
+        response.status(201).json(updatedPerson)
       })
     })
     .catch(error => next(error))
