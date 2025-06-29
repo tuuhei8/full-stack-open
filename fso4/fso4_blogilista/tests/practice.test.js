@@ -3,14 +3,14 @@ const assert = require('node:assert')
 const listHelper = require('../utils/list_helper')
 
 test('dummy returns one', () => {
-  const blogs = []
+  const notes = []
 
-  const result = listHelper.dummy(blogs)
+  const result = listHelper.dummy(notes)
   assert.strictEqual(result, 1)
 })
 
 describe('total likes', () => {
-  const listWithOneBlog = [
+  const listWithOneNote = [
     {
       _id: '5a422aa71b54a676234d17f8',
       title: 'Go To Statement Considered Harmful',
@@ -21,12 +21,12 @@ describe('total likes', () => {
     }
   ]
 
-  test('when list has only one blog equals the likes of that', () => {
-    const result = listHelper.totalLikes(listWithOneBlog)
+  test('when list has only one note equals the likes of that', () => {
+    const result = listHelper.totalLikes(listWithOneNote)
     assert.strictEqual(result, 5)
   })
 
-  const blogs = [
+  const notes = [
     {
       _id: '5a422aa71b54a676234d17f8',
       title: 'Go To Statement Considered Harmful',
@@ -45,8 +45,8 @@ describe('total likes', () => {
     }
   ]
 
-  test('when list has multiple blogs equals the sum of them', () => {
-    const result = listHelper.totalLikes(blogs)
+  test('when list has multiple notes equals the sum of them', () => {
+    const result = listHelper.totalLikes(notes)
     assert.strictEqual(result, 8)
   })
 
