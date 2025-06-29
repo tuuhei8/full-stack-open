@@ -1,0 +1,11 @@
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImtheXR0YWphbmltaSAyIiwiaWQiOiI2ODVmZmFjMzk3NzhmNWRkM2U4NGZlMGYiLCJpYXQiOjE3NTExOTYyNTl9.ebjWW7-3cXbiuWYpY2SkdZkknt9dGepYcNgwDAxF_eM
+
+{
+    "title": "Otsikko Tokenilla",
+    "author": "Kirjoittaja Tokenilla",
+    "url": "Osoite",
+    "likes": 5,
+    "userId": "685ffac39778f5dd3e84fe0f"
+}
