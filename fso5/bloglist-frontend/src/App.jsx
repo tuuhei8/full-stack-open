@@ -33,8 +33,7 @@ const App = () => {
 
   const handleLogin = async (event) => {
     event.preventDefault()
-    console.log('logging in with', username, password)
-
+    
     try {
       const user = await loginService.login({
       username, password,
@@ -79,12 +78,6 @@ const App = () => {
     window.localStorage.clear()
     setUser(null)
     blogService.setToken(null)
-    console.log(blogService.check());
-  }
-
-  const klik = () => {
-    console.log(blogService.check());
-    
   }
 
   if (user === null) {
@@ -110,7 +103,6 @@ const App = () => {
           <Blog key={blog.id} blog={blog} />
         )}
       </div>
-      <button onClick={klik}>klik</button>
     </div>
   )
 }

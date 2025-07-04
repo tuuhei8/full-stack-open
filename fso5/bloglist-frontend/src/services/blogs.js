@@ -7,11 +7,6 @@ const setToken = newToken => {
   token = `Bearer ${newToken}`
 }
 
-const check = () => {
-  console.log(token);
-  
-}
-
 const getAll = () => {
   const request = axios.get(baseUrl)
   return request.then(response => response.data)
@@ -26,4 +21,4 @@ const create = async newObject => {
   return response.data
 }
 
-export default { getAll, setToken, create, check }
+export default { getAll, setToken, create }
