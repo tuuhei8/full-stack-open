@@ -12,6 +12,7 @@ const App = () => {
   const [password, setPassword] = useState('')
   const [user, setUser] = useState(null)
   const [errorMessage, setErrorMessage] = useState(null)
+  const [eventMessage, setEventMessage] = useState(null)
   const [title, setTitle] = useState('')
   const [author, setAuthor] = useState('')
   const [url, setUrl] = useState('')
@@ -33,7 +34,7 @@ const App = () => {
 
   const handleLogin = async (event) => {
     event.preventDefault()
-    
+
     try {
       const user = await loginService.login({
       username, password,
@@ -63,11 +64,15 @@ const App = () => {
         url: url
       })
       setBlogs(blogs.concat(newBlog))
+      setEventMessage(`a new blog ${title} by ${author} added`)
+      setTimeout(() => {
+        setEventMessage(null)
+      }, 5000)
       setTitle('')
       setAuthor('')
       setUrl('')
     } catch (exception) {
-      setErrorMessage('wrong credentials')
+      setErrorMessage('Error')
       setTimeout(() => {
         setErrorMessage(null)
       }, 5000)
@@ -83,8 +88,8 @@ const App = () => {
   if (user === null) {
     return (
       <div>
-        <p>{errorMessage}</p>
         <h2>login</h2>
+        <h2>{errorMessage}</h2>
           <LoginForm handleLogin={handleLogin} uNameValue={username} uNameOnChange={({ target }) => setUsername(target.value)}
           pswValue={password} pswOnChange={({ target }) => setPassword(target.value)}/>
       </div>
@@ -94,6 +99,8 @@ const App = () => {
   return (
     <div>
       <h2>blogs</h2>
+      <h2>{errorMessage}</h2>
+      <h2>{eventMessage}</h2>
       <User name={user.name} logout={logout}/>
       <BlogForm addBlog={addBlog} title={title} titleOnChange={({ target }) => setTitle(target.value)}
         author={author} authorOnChange={({ target }) => setAuthor(target.value)}
