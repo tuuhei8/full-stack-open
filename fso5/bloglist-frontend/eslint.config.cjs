@@ -26,6 +26,7 @@ module.exports = defineConfig([{
     languageOptions: {
         globals: {
             ...globals.browser,
+            ...globals.vitest,
         },
 
         ecmaVersion: "latest",
@@ -38,6 +39,7 @@ module.exports = defineConfig([{
         "plugin:react/recommended",
         "plugin:react/jsx-runtime",
         "plugin:react-hooks/recommended",
+        "plugin:vitest-globals/recommended",
     )),
 
     settings: {
