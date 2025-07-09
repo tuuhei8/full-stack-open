@@ -3,7 +3,7 @@ import Blog from './Blog'
 
 test('renders content', () => {
   const blog = {
-    user: {username: 'user'},
+    user: { username: 'user' },
     title: 'Component testing is done with react-testing-library',
     author: 'author',
     url: 'url',

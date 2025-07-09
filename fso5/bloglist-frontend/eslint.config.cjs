@@ -70,4 +70,4 @@ module.exports = defineConfig([{
         "react/prop-types": 0,
         "no-unused-vars": 0,
     },
-}, globalIgnores(["**/dist", "**/.eslintrc.cjs"]), globalIgnores(["**/node_modules", "**/dist", "**/.eslintrc.cjs", "**/vite.config.js"])]);
+}, globalIgnores(["**/dist", "**/.eslintrc.cjs"]), globalIgnores(["**/node_modules", "**/dist", "**/.eslintrc.cjs", "**/vite.config.js", "**/eslint.config.cjs"])]);
