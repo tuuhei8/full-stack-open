@@ -12,7 +12,7 @@ const LoginForm = (props) => {
           id="psw"
           value={props.pswValue}
           onChange={props.pswOnChange}/><br/><br/>
-        <input type="submit" value="Login"></input>  
+        <input type="submit" value="Login"></input>
       </form>
     </>
   )
