@@ -2,8 +2,6 @@ import { useState } from 'react'
 import RemoveButton from './RemoveButton'
 import PropTypes from 'prop-types'
 
-
-
 const Blog = ({ blog, addLike, user, remove }) => {
   const blogStyle = {
     paddingTop: 10,
@@ -23,10 +21,6 @@ const Blog = ({ blog, addLike, user, remove }) => {
     console.log('OK')
   }
 
-  const test = () => {
-    console.log('blog:',blog.user.username)
-    console.log('user:', user.username)
-  }
   const showButtonValue = visible ? 'hide' : 'show'
   const showWhenVisible = { display: visible ? '' : 'none' }
 
@@ -37,14 +31,12 @@ const Blog = ({ blog, addLike, user, remove }) => {
   return (
     <div style={blogStyle}>
       <div>
-        {blog.title}<input type="submit" value={showButtonValue} onClick={toggleVisibility}></input>
+        {blog.title} by {blog.author}<button onClick={toggleVisibility}>{showButtonValue}</button>
       </div>
-      <div style={showWhenVisible}>
+      <div style={showWhenVisible} className='togglableDetails'>
         {blog.url}<br/>
         likes: {blog.likes} <button onClick={like}>like</button><br/>
-        {blog.author}<br/>
-        <button onClick={toggleVisibility}>hide</button>
-        <button onClick={test}>test</button>
+        {blog.user.name}<br/>
         <RemoveButton blog={blog} user={user} remove={remove} />
       </div>
     </div>

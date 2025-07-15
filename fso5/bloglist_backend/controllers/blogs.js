@@ -38,9 +38,9 @@ blogsRouter.post('/', async (request, response, next) => {
 
   try {
     const blog = new Blog({
-      title: body.title,
-      author: body.author,
-      url: body.url,
+      title: body.title || 'empty',
+      author: body.author || 'empty',
+      url: body.url || 'empty',
       likes: body.likes || 0,
       user: user.id
     })
@@ -58,7 +58,6 @@ blogsRouter.post('/', async (request, response, next) => {
 blogsRouter.put('/:id', async (request, response, next) => {
   const body = request.body
   let blogToUpdate = await Blog.findById(request.params.id)
-  console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAA', request.body.user.id)
   
   try {
     blogToUpdate.title = body.title

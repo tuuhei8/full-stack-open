@@ -10,7 +10,8 @@
     "build:ui": "@powershell Remove-Item -Recurse -Force dist && cd ../bloglist-frontend && npm run build && @powershell Copy-Item dist -Recurse ../bloglist_backend",
     "start": "cross-env NODE_ENV=production node index.js",
     "dev": "cross-env NODE_ENV=development node --watch index.js",
-    "test": "cross-env  NODE_ENV=test node --test",
+    "test": "cross-env NODE_ENV=test node --test",
+    "start:test": "cross-env NODE_ENV=test node index.js",
     "lint": "eslint ."
   },
   "dependencies": {
