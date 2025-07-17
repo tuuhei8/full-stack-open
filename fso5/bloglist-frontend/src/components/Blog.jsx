@@ -13,7 +13,7 @@ const Blog = ({ blog, addLike, user, remove }) => {
   const [visible, setVisible] = useState(false)
 
   const like = () => {
-    const changedBlog = {...blog, likes: blog.likes+ 1}
+    const changedBlog = {...blog, likes: blog.likes + 1}
     addLike(changedBlog)
   }
 
