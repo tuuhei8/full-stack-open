@@ -13,8 +13,8 @@ const Blog = ({ blog, addLike, user, remove }) => {
   const [visible, setVisible] = useState(false)
 
   const like = () => {
-    blog.likes += 1
-    addLike(blog)
+    const changedBlog = {...blog, likes: blog.likes+ 1}
+    addLike(changedBlog)
   }
 
   if (blog.user.username === user.username) {
