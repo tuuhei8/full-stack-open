@@ -1,0 +1,33 @@
+{
+  "name": "blogilista",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "TH",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "build:ui": "@powershell Remove-Item -Recurse -Force dist && cd ../bloglist-frontend && npm run build && @powershell Copy-Item dist -Recurse ../bloglist_backend",
+    "start": "cross-env NODE_ENV=production node index.js",
+    "dev": "cross-env NODE_ENV=development node --watch index.js",
+    "test": "cross-env NODE_ENV=test node --test",
+    "start:test": "cross-env NODE_ENV=test node index.js",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.15.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.29.0",
+    "@stylistic/eslint-plugin-js": "^4.4.1",
+    "eslint": "^9.30.1",
+    "eslint-config-prettier": "^10.1.8",
+    "globals": "^16.2.0",
+    "supertest": "^7.1.1"
+  }
+}

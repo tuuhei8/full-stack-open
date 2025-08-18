@@ -1,0 +1,11 @@
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImtvbW1lbnR0aWtheXR0YWphIiwiaWQiOiI2OGEwNjJjNTJkMjk2MGQxNWUwNzY4ZTMiLCJpYXQiOjE3NTUzNDE1OTV9.g6Sor7NhSla_R7ARO6qq6SkHOTLS40lcquoqED4gcHI
+
+{
+    "title": "Otsikko",
+    "author": "Kirjoittaja",
+    "url": "Osoite",
+    "likes": 5,
+    "userId": "68a062c52d2960d15e0768e3"
+}
