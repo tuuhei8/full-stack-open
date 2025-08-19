@@ -17,8 +17,7 @@ import BlogList from './components/BlogList'
 import NoPage from './components/NoPage'
 import {
   BrowserRouter as Router,
-  Routes, Route, Link, useParams,
-  useNavigate
+  Routes, Route
 } from 'react-router-dom'
 
 const App = () => {
@@ -115,6 +114,7 @@ const App = () => {
       <Router>
         <div>
           <NavigationMenu user={user} logout={logout} />
+          <h2>Blog app</h2>
           <h2>{notification}</h2>
           <Routes>
             <Route path='/' element={<LoginForm handleLogin={handleLogin} uNameValue={username} uNameOnChange={({ target }) => setUsername(target.value)}
