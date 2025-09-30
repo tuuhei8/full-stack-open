@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { ALL_BOOKS } from '../queries/queries'
 
 const Intro = ({ genre, books }) => {
-  if (genre && !books[0].genres.includes(genre)) {
+  if (genre && books[0] && !books[0].genres.includes(genre)) {
     return <div>No books of genre <strong>{genre}</strong> found.<br/><br/></div>
   }
 

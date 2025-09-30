@@ -43,10 +43,6 @@ const Recommend = (props) => {
 
   const recommendations = library.data.allBooks
 
-  const klik = () => {
-    console.log(genre, recommendations[0].genres.includes(genre))
-  }
-
   if (!recommendations[0]) {
     return (
       <div>
@@ -56,6 +52,9 @@ const Recommend = (props) => {
   }
 
   if (!recommendations[0].genres.includes(genre)) {
+    if (!genre) {
+      user.refetch()
+    }
     return (
       <div>
         No books matched your favorite genre: {genre}
@@ -82,7 +81,6 @@ const Recommend = (props) => {
           ))}
         </tbody>
       </table>
-     <button onClick={klik}>klik</button>
     </div>
   )
 
