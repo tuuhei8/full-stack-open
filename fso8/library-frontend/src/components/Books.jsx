@@ -38,24 +38,7 @@ const Books = (props) => {
   }
 
   const books = data.allBooks
-/*
-  if (genre && !books[0].genres.includes(genre)) {
-    return (
-      <div>
-        No books of this genre found.
-        <div>
-          <button onClick={() => setGenreFilter('refactoring')}>refactoring</button>
-          <button onClick={() => setGenreFilter('agile')}>agile</button>
-          <button onClick={() => setGenreFilter('patterns')}>patterns</button>
-          <button onClick={() => setGenreFilter('design')}>design</button>
-          <button onClick={() => setGenreFilter('crime')}>crime</button>
-          <button onClick={() => setGenreFilter('classic')}>classic</button>
-          <button onClick={() => setGenreFilter(null)}>all genres</button>
-        </div>
-      </div>
-    )
-  }
-*/
+
   return (
     <div>
       <h2>books</h2>
