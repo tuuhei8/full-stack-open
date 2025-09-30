@@ -15,7 +15,6 @@ const Intro = ({ genre, books }) => {
   return (
     <div>Found books for genre: <strong>{genre}</strong><br/><br/></div>
   )
-  
 }
 
 const Books = (props) => {
