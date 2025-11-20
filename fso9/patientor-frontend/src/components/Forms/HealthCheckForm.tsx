@@ -74,7 +74,7 @@ const HealthCheckForm = (props: Props) => {
         </select><br />
         <div>Diagnosis codes: {diagnosisCodes.join(', ')}</div>
         <button onClick={addCode} type="button">add diagnosis code</button><br />
-        <label htmlFor="rating">health rating</label>
+        <label htmlFor="rating">health risk rating</label>
         <select id="rating" onChange={({ target }) => setHealthCheckRating(Number(target.value))}>
           <option value="0">0</option>
           <option value="1">1</option>
