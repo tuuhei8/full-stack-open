@@ -26,11 +26,11 @@ const toNewPatientEntry = (object: unknown): NewPatientEntry => {
 };
 
 export const newPatientEntrySchema = z.object({
-  name: z.string(),
+  name: z.string().min(1, { message: 'Name required' }),
   dateOfBirth: z.iso.date(),
-  ssn: z.string(),
-  gender: z.enum(Gender),
-  occupation: z.string()
+  ssn: z.string().min(1, { message: 'Ssn required' }),
+  gender: z.enum(Gender, { message: 'Invalid gender' }),
+  occupation: z.string().min(1, { message: 'Occupation required' })
 });
 
 /*
@@ -66,9 +66,9 @@ const toNewEntry = (object: unknown): newEntry => {
   if ('description' in object && 'date' in object && 'specialist' in object
      && 'type' in object && 'discharge' in object && object.type === 'Hospital') {
       const entry: newEntry = {
-        description: z.string().parse(object.description),
+        description: z.string().min(1, { message: 'Description required' }).parse(object.description),
         date: z.iso.date().parse(object.date),
-        specialist: z.string().parse(object.description),
+        specialist: z.string().min(1, { message: 'Specialist required' }).parse(object.specialist),
         diagnosisCodes: parseDiagnosisCodes(object),
         type: "Hospital",
         discharge: parseDischarge(object.discharge)
@@ -79,12 +79,12 @@ const toNewEntry = (object: unknown): newEntry => {
   if ('description' in object && 'date' in object && 'specialist' in object
      && 'type' in object && 'employerName' in object && object.type === 'OccupationalHealthcare') {
       const entry: newEntry = {
-        description: z.string().parse(object.description),
+        description: z.string().min(1, { message: 'Description required' }).parse(object.description),
         date: z.iso.date().parse(object.date),
-        specialist: z.string().parse(object.description),
+        specialist: z.string().min(1, { message: 'Specialist required' }).parse(object.specialist),
         diagnosisCodes: parseDiagnosisCodes(object),
         type: "OccupationalHealthcare",
-        employerName: z.string().parse(object.employerName),
+        employerName: z.string().min(1, { message: 'Employer name required'}).parse(object.employerName),
         sickLeave: parseSickLeave(object)
       };
       return entry;
@@ -93,17 +93,18 @@ const toNewEntry = (object: unknown): newEntry => {
   if ('description' in object && 'date' in object && 'specialist' in object
      && 'type' in object && 'healthCheckRating' in object && object.type === 'HealthCheck') {
       const entry: newEntry = {
-        description: z.string().parse(object.description),
+        description: z.string().min(1, { message: 'Description required' }).parse(object.description),
         date: z.iso.date().parse(object.date),
-        specialist: z.string().parse(object.description),
+        specialist: z.string().min(1, { message: 'Specialist required' }).parse(object.specialist),
         diagnosisCodes: parseDiagnosisCodes(object),
         type: "HealthCheck",
-        healthCheckRating: z.enum(HealthCheckRating).parse(object.healthCheckRating)
+        healthCheckRating: z.enum(HealthCheckRating,
+          { message: `Invalid health check rating ${object.healthCheckRating}` }).parse(object.healthCheckRating)
       };
       return entry;
     }
 
-  throw new Error('Incorrect data: some fields are missing');
+  throw new Error('Incorrect data: some fields are missing or malformed');
 };
 
 const parseDiagnosisCodes = (object: unknown): Array<Diagnosis['code']> =>  {
@@ -117,7 +118,7 @@ const parseDiagnosisCodes = (object: unknown): Array<Diagnosis['code']> =>  {
 
 const parseSickLeave = (object: unknown): SickLeave | undefined => {
   if (!object || typeof object !== 'object' || !('sickLeave' in object)) {
-    console.log('no sickleave parameter given');
+    console.log('no sickleave parameter received in new occupational healthcare entry');
     return;
   }
 
@@ -127,12 +128,13 @@ const parseSickLeave = (object: unknown): SickLeave | undefined => {
     }
   }
 
-  throw new Error('Incorrect or missing data');
+  throw new Error('Sickleave dates missing or wrong');
 };
 
 const isSickLeave = (object: object): object is SickLeave => {
   if (!('startDate' in object) || !('endDate' in object) || Object.values(object).length !== 2 ||
-    !z.iso.date().parse(object.startDate) || !z.iso.date().parse(object.endDate)) {
+    !z.iso.date({ message: 'Sick leave start date missing or wrong' }).parse(object.startDate) ||
+    !z.iso.date({ message: 'Sick leave end date missing or wrong' }).parse(object.endDate)) {
     return false;
   }
   return true;
@@ -140,8 +142,8 @@ const isSickLeave = (object: object): object is SickLeave => {
 
 const parseDischarge = (object: unknown): Discharge => {
   if (!object || typeof object !== 'object' || !isDischarge(object) ||
-   !('date' in object) || !z.iso.date().parse(object.date)) {
-    throw new Error('Incorrect or missing data');
+   !('date' in object) || !z.iso.date({ message: 'Discharge date required' }).parse(object.date)) {
+    throw new Error('Discharge data missing or wrong');
   }
 
   return object;

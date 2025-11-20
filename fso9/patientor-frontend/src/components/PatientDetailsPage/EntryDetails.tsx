@@ -1,6 +1,15 @@
 import type { Diagnosis, Entry, HospitalEntry,
   OccupationalHealthcareEntry, HealthCheckEntry
- } from "../types";
+ } from "../../types";
+
+const style = () => {
+  const styles = {
+    border: '2px solid rgba(1, 1, 1, 1)',
+    margin: '20px 20px',
+    padding: '10px'
+   };
+   return styles;
+};
 
 const assertNever = (value: never): never => {
   throw new Error(
@@ -9,13 +18,13 @@ const assertNever = (value: never): never => {
 };
 
 const checkDiagnosisCode = (code: string, diagnoses: Diagnosis[]) => {
-    const diagnosis = diagnoses.find(d => d.code === code )?.name;
-    return diagnosis;
-  };
+  const diagnosis = diagnoses.find(d => d.code === code )?.name;
+  return diagnosis;
+};
 
 const HospitalEntry = ({ entry, diagnoses }: { entry: HospitalEntry, diagnoses: Diagnosis[] }) => {
   return (
-    <div>
+    <div style={style()}>
       <p>{entry.date} {entry.description}</p>
       <p>Discharge date: {entry.discharge.date}.</p>
       <p>Criteria: {entry.discharge.criteria}.</p>
@@ -30,7 +39,7 @@ const HospitalEntry = ({ entry, diagnoses }: { entry: HospitalEntry, diagnoses: 
 
 const OccupationalHealthcareEntry = ({ entry, diagnoses }: { entry: OccupationalHealthcareEntry, diagnoses: Diagnosis[] }) => {
   return (
-    <div>
+    <div style={style()}>
       <p>{entry.date} {entry.description}</p>
       <p>Employer: {entry.employerName}.</p>
       <h4>Sick leave:</h4>
@@ -47,7 +56,7 @@ const OccupationalHealthcareEntry = ({ entry, diagnoses }: { entry: Occupational
 
 const HealthCheckEntry = ({ entry, diagnoses }: { entry: HealthCheckEntry, diagnoses: Diagnosis[] }) => {
   return (
-    <div>
+    <div style={style()}>
       <p>{entry.date} {entry.description}</p>
       <p>Health risk level: {entry.healthCheckRating}</p>
       <ul>

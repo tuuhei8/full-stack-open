@@ -38,6 +38,9 @@ const PatientListPage = ({ patients, setPatients } : Props ) => {
           const message = e.response.data.replace('Something went wrong. Error: ', '');
           console.error(message);
           setError(message);
+        } else if (e.response?.data.error[0].message && typeof e.response?.data.error[0].message === 'string') {
+          console.error('unrecognised axios error', e.response?.data.error[0]);
+          setError(e.response?.data.error[0].message);
         } else {
           setError("Unrecognized axios error");
         }

@@ -5,7 +5,7 @@ Content-Type: application/json
     "description": "description here",
     "date": "1999-01-01",
     "specialist": "MD House",
-    "diagnosisCodes": ["S62.5"],
+    "diagnosisCodes": ["M51.2"],
     "type": "Hospital",
     "discharge": { "date": "1999-01-01", "criteria": "criteria here"}
 }

@@ -17,7 +17,6 @@ function App() {
 
   useEffect(() => {
     diaryService.getAll().then(response => {
-      console.log(response);
       setDiaryEntries(response);
     });
   }, []);
